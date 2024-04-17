@@ -1,0 +1,20 @@
+<div class="container">
+    <form class="row g-3 needs-validation" novalidate (submit)="enviar($event)" [formGroup]="contactForm">
+        <div class="mb-3">
+            <label for="email" class="form-label"     >Email </label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email" [ngClass]="{'is-invalid':hasError('email','required') || hasError('email','email')}" >
+           @if (hasError('email','email')) { <span  class="text-danger" > email invalido</span>}
+           @if (hasError('email','required')) { <span  class="text-danger" > campo requerido</span>}
+        
+        </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="message" rows="3" formControlName="message"  [ngClass]="{'is-invalid':hasError('message','required') || hasError('message','minLength')}"></textarea>
+           @if (hasError('message','required')) { <span  class="text-danger">Campo requerido</span>}
+           @if (hasError('message','minlength')) { <span class="text-danger">El mensaje debe ser mayor a 10 caracteres</span>}
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+</div>
